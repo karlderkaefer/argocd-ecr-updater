@@ -3,7 +3,7 @@
     "master",
     "main"
   ],
-  "repositoryUrl": "git@github.com:signavio/k8s-deploy-server.git",
+  "repositoryUrl": "https://github.com/karlderkaefer/argocd-ecr-updater.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
