@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "argocd-ecr-updater.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include "argocd-ecr-updater.selectorLabels" . | nindent 6 }}
