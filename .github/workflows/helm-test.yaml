@@ -27,4 +27,5 @@ jobs:
         uses: helm/chart-testing-action@b0d4458c71155b54fcf33e11dd465dc923550009 # v2.0.1
 
       - name: Run chart-testing (lint)
-        run: ct lint --target-branch=main --check-version-increment=false
+#        run: ct lint --target-branch=main --check-version-increment=false
+        run: ct lint --check-version-increment=false
