@@ -28,4 +28,4 @@ jobs:
 
       - name: Run chart-testing (lint)
 #        run: ct lint --target-branch=main --check-version-increment=false
-        run: ct lint --check-version-increment=false
+        run: ct lint --check-version-increment=false --charts charts/argocd-ecr-updater
