@@ -4,9 +4,9 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 COPY . .
-RUN go build -o /bin/argocd-ecr-updater
+RUN CGO_ENABLED=0 go build -o /bin/argocd-ecr-updater
 
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base-debian11
 WORKDIR /app
 COPY --from=BASE /bin/argocd-ecr-updater .
 CMD ["./argocd-ecr-updater"]
