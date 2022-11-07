@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.0.0...v1.0.1) (2022-11-07)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/spf13/viper to v1.14.0 ([#7](https://github.com/karlderkaefer/argocd-ecr-updater/issues/7)) ([2fa4da8](https://github.com/karlderkaefer/argocd-ecr-updater/commit/2fa4da8817b6208d5e2816f9f2877869b6afec96))
+
 # 1.0.0 (2022-11-06)
 
 
