@@ -1,0 +1,11 @@
+apiVersion: v2
+name: argocd-ecr-updater
+description: A Helm chart for Kubernetes
+type: application
+version: 0.1.0
+appVersion: "main"
+sources:
+  - https://github.com/karlderkaefer/argocd-ecr-update
+maintainers:
+  - name: karlderkaefer
+    url: https://github.com/karlderkaefer/argocd-ecr-update

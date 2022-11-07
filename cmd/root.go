@@ -39,7 +39,7 @@ func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.Flags().String("kubeconfig", "", "kubernetes config file")
 	rootCmd.Flags().String("namespace", "", "kubernetes namespace")
-	rootCmd.Flags().String("interval", "10s", "interval to refresh token")
+	rootCmd.Flags().String("interval", "6h", "interval to refresh token")
 	err := bindFlags()
 	if err != nil {
 		logrus.Errorln(err)
@@ -61,7 +61,7 @@ func bindFlags() error {
 // initConfig reads in config file and ENV variables if set.
 func initConfig() {
 	viper.AutomaticEnv()
-	viper.SetEnvPrefix("ECR")
+	viper.SetEnvPrefix("ARGOCD_ECR_UPDATER")
 	cfg = EcrUpdaterConfig{}
 	err := viper.Unmarshal(&cfg)
 	if err != nil {
