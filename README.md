@@ -1,5 +1,7 @@
 # ArgoCD ECR updater
 
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/argocd-aws-ecr-updater)](https://artifacthub.io/packages/search?repo=argocd-aws-ecr-updater)
+
 If you are using a private [AWS ECR repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html) 
 to store helm charts, the stored password will become expired at latest in `12h`.  
 The argocd-ecr-updater will refresh the token in defined interval.
@@ -40,6 +42,14 @@ serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/argocd-ecr-updater
 ```
+
+## Install with Helm
+```bash
+helm repo add argocd-ecr-updater https://karlderkaefer.github.io/argocd-ecr-updater
+helm search repo argocd-ecr-updater 
+helm upgrade --install argocd-ecr-updater -n argocd argocd-ecr-updater/argocd-ecr-updater
+```
+
 
 ## Usage CLI
 ```bash
