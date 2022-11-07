@@ -35,7 +35,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: ECR_NAMESPACE
+            - name: ARGOCD_ECR_UPDATER_NAMESPACE
               value: {{ .Values.namespace }}
           ports:
             - name: http

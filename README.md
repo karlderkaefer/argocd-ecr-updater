@@ -56,6 +56,13 @@ Flags:
 * `--interval`: defined in which interval the token will refreshed
 * `--namespace`: if empty, then mutate secrets from all namespaces matching the label
 
+You can also set these values by providing environment variable with prefix `ARGOCD_ECR_UPDATER`
+```bash
+ARGOCD_ECR_UPDATER_NAMESPACE="argocd"
+ARGOCD_ECR_UPDATER_INTERVAL="6h0m0s"
+ARGOCD_ECR_UPDATER_KUBECONFIG="/home/user/.kube/config"
+```
+
 ## Related GitHub Issues
 * https://github.com/argoproj/argo-cd/issues/8097
 * https://github.com/argoproj/argo-cd/issues/8952

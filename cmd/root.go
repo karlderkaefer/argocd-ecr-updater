@@ -61,7 +61,7 @@ func bindFlags() error {
 // initConfig reads in config file and ENV variables if set.
 func initConfig() {
 	viper.AutomaticEnv()
-	viper.SetEnvPrefix("ECR")
+	viper.SetEnvPrefix("ARGOCD_ECR_UPDATER")
 	cfg = EcrUpdaterConfig{}
 	err := viper.Unmarshal(&cfg)
 	if err != nil {
