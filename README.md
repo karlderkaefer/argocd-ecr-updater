@@ -34,6 +34,13 @@ To give ArgoCD permission to get the ECR token create [IRSA role](https://github
 This token is valid to authenticate against any registry id, the user has access. 
 Depending on how you set the trust relationship on ECR repository policy. 
 
+Finally annotate the service account with your role arn
+```yaml
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/argocd-ecr-updater
+```
+
 ## Usage CLI
 ```bash
 Usage:
