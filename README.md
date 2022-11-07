@@ -58,7 +58,7 @@ Usage:
 
 Flags:
   -h, --help                help for argocd-ecr-updater
-      --interval string     interval to refresh token (default "10s")
+      --interval string     interval to refresh token (default "6h")
       --kubeconfig string   kubernetes config file
       --namespace string    kubernetes namespace
 ```
