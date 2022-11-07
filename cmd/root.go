@@ -39,7 +39,7 @@ func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.Flags().String("kubeconfig", "", "kubernetes config file")
 	rootCmd.Flags().String("namespace", "", "kubernetes namespace")
-	rootCmd.Flags().String("interval", "10s", "interval to refresh token")
+	rootCmd.Flags().String("interval", "6h", "interval to refresh token")
 	err := bindFlags()
 	if err != nil {
 		logrus.Errorln(err)
