@@ -30,6 +30,8 @@ serviceAccount:
 
 podAnnotations: {}
 
+podLabels: {}
+
 podSecurityContext: {}
   # fsGroup: 2000
 
@@ -40,10 +42,6 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
-service:
-  type: ClusterIP
-  port: 80
 
 resources:
    limits:

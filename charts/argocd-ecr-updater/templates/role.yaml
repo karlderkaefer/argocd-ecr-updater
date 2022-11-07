@@ -15,4 +15,5 @@ rules:
       - list
       - watch
       - patch
+      - update
 {{- end }}
