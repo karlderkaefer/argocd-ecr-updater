@@ -33,22 +33,24 @@ podAnnotations: {}
 podLabels: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+containerSecurityContext:
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 65534
+  allowPrivilegeEscalation: false
+  seccompProfile:
+    type: RuntimeDefault
 
 resources:
-   limits:
-     memory: 128Mi
-   requests:
-     cpu: 20m
-     memory: 64Mi
+  limits:
+    memory: 128Mi
+  requests:
+    cpu: 20m
+    memory: 64Mi
 
 nodeSelector: {}
 
