@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.0...v1.1.1) (2022-11-14)
+
+
+### Bug Fixes
+
+* **release:** publish docker tag on tags ([eb189e1](https://github.com/karlderkaefer/argocd-ecr-updater/commit/eb189e14fc553d38b48068c7c27715c59a928f2c))
+
 # [1.1.0](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.0.1...v1.1.0) (2022-11-07)
 
 
