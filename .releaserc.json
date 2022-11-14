@@ -7,6 +7,10 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
+    ["@semantic-release/exec", {
+      "prepareCmd": "./bump.sh -v ${nextRelease.version} -b true",
+      "verifyReleaseCmd": "./bump.sh -v ${nextRelease.version}"
+    }],
     "@semantic-release/github",
     [
       "@semantic-release/changelog",
@@ -18,7 +22,8 @@
       "@semantic-release/git",
       {
         "assets": [
-          "docs/CHANGELOG.md"
+          "docs/CHANGELOG.md",
+          "charts/**/Chart.yaml"
         ],
         "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
       }
