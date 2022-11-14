@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.4...v1.1.5) (2022-11-14)
+
+
+### Bug Fixes
+
+* **release:** bump helm chart on new version ([f3331db](https://github.com/karlderkaefer/argocd-ecr-updater/commit/f3331dbacb762a1b9a83086bfaf802eb3a3cdb03))
+
 ## [1.1.4](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.3...v1.1.4) (2022-11-14)
 
 
