@@ -8,8 +8,8 @@
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     ["@semantic-release/exec", {
-      "prepareCmd": "./bump.sh -v ${nextRelease.version} -b true",
-      "verifyReleaseCmd": "./bump.sh -v ${nextRelease.version}"
+      "prepareCmd": "./github/bump.sh -v ${nextRelease.version} -b true",
+      "verifyReleaseCmd": "./github/bump.sh -v ${nextRelease.version}"
     }],
     "@semantic-release/github",
     [
