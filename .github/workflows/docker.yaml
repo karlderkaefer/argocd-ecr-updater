@@ -2,8 +2,11 @@ name: Create and publish a Docker image
 
 on:
   push:
+    branches:
+      - 'main'
     tags:
-      - '**'
+      - 'v*'
+  pull_request:
     branches:
       - 'main'
 
@@ -34,11 +37,16 @@ jobs:
         uses: docker/metadata-action@57396166ad8aefe6098280995947635806a0e6ea
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ffe65bfc276d2ef003d5ea483a9947a8f6d408da
         with:
           context: .
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
