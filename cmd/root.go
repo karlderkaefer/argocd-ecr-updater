@@ -38,7 +38,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.Flags().String("kubeconfig", "", "kubernetes config file")
-	rootCmd.Flags().String("namespace", "", "kubernetes namespace")
+	rootCmd.Flags().String("namespace", "argocd", "kubernetes namespace")
 	rootCmd.Flags().String("interval", "6h", "interval to refresh token")
 	err := bindFlags()
 	if err != nil {
