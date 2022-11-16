@@ -1,3 +1,11 @@
+## [1.1.6](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.5...v1.1.6) (2022-11-16)
+
+
+### Bug Fixes
+
+* decode base64 token and extract password for registry ([7513b06](https://github.com/karlderkaefer/argocd-ecr-updater/commit/7513b06d4929c3601aa0dac0eef14258c70b200c))
+* set default namespace to argocd ([aa1b6d4](https://github.com/karlderkaefer/argocd-ecr-updater/commit/aa1b6d447de981c4d038daac011b138e59ed8868))
+
 ## [1.1.5](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.4...v1.1.5) (2022-11-14)
 
 
