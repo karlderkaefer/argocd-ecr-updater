@@ -2,12 +2,14 @@ package aws
 
 import (
 	"context"
+	"encoding/base64"
 	"errors"
 	"fmt"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/ecr"
 	"github.com/sirupsen/logrus"
+	"strings"
 )
 
 type AwsClient struct {
@@ -40,12 +42,22 @@ func (client *AwsClient) GetToken() (string, error) {
 		return "", errors.New("length of auhtorization data must be greater than 0")
 	}
 	token := resp.AuthorizationData[0].AuthorizationToken
+
 	expires := resp.AuthorizationData[0].ExpiresAt
 	if token == nil {
 		return "", errors.New("invalid token")
 	}
+	// returns b64 decoded string AWS:ey...
+	decToken, err := base64.StdEncoding.DecodeString(*token)
+	if err != nil {
+		return "", err
+	}
+	if !strings.Contains(string(decToken), ":") {
+		return "", errors.New("invalid token")
+	}
+	password := strings.Split(string(decToken), ":")[1]
 	logrus.Debug("found token. token will expire at ", expires)
-	return *token, nil
+	return password, nil
 }
 
 // ValidateAccess unused
