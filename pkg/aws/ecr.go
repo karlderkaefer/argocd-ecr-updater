@@ -23,18 +23,15 @@ type RepositoryInfo struct {
 
 func NewAwsClient() (*AwsClient, error) {
 	// TODO remove profile
-	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("eu-central-1"))
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithDefaultRegion(""))
 	if err != nil {
 		return nil, fmt.Errorf("unable to load SDK config, %v", err)
 	}
 	client := ecr.NewFromConfig(cfg)
-	fmt.Println("region", cfg.Region)
 	return &AwsClient{ecrClient: client}, nil
 }
 
 func (client *AwsClient) GetToken() (string, error) {
-	repo, _ := client.ecrClient.DescribeRegistry(context.TODO(), &ecr.DescribeRegistryInput{})
-	fmt.Println(*repo.RegistryId)
 	resp, err := client.ecrClient.GetAuthorizationToken(context.TODO(), &ecr.GetAuthorizationTokenInput{})
 	if err != nil {
 		logrus.Errorf("unable to load SDK config, %v", err)
