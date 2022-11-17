@@ -16,24 +16,87 @@ metadata:
 ```
 The data field `password` will be updated with a fresh token from AWS ECR.
 
-To give ArgoCD permission to get the ECR token create [IRSA role](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/v5.5.5/modules/iam-assumable-role-with-oidc) with following permissions
+To give argocd-ecr-updater permission to get the ECR token create [IRSA role](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/v5.5.5/modules/iam-assumable-role-with-oidc) with following permissions
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "",
-            "Effect": "Allow",
-            "Action": [
-                "ecr:GetAuthorizationToken",
-                "ecr:DescribeRepositories"
-            ],
-            "Resource": "*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:ListTagsForResource",
+        "ecr:ListImages",
+        "ecr:GetRepositoryPolicy",
+        "ecr:GetLifecyclePolicyPreview",
+        "ecr:GetLifecyclePolicy",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetAuthorizationToken",
+        "ecr:DescribeRepositories",
+        "ecr:DescribeImages",
+        "ecr:DescribeImageScanFindings",
+        "ecr:BatchGetImage",
+        "ecr:BatchCheckLayerAvailability"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
-This token is valid to authenticate against any registry id, the user has access. 
+As alternative, you can also use managed AWS role `AmazonEC2ContainerRegistryReadOnly`.
+
+If the ECR is not in the same account as the kubernetes cluster, you may want to adapt ECR Access Permission. 
+In this example, I have one dedicated user `ecr.circleci` that can write (publish charts) to ECR.
+While argocd just need to pull helm charts, you can create separate read permission and allow accounts to read from ECR where the kubernetes clusters runs (account `555555555555`).
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::123456789012:user/ecr.circleci"
+      },
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:CompleteLayerUpload",
+        "ecr:DescribeImages",
+        "ecr:DescribeRepositories",
+        "ecr:GetAuthorizationToken",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:InitiateLayerUpload",
+        "ecr:ListImages",
+        "ecr:PutImage",
+        "ecr:UploadLayerPart"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::555555555555:root",
+          ""
+        ]
+      },
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:DescribeImages",
+        "ecr:DescribeRepositories",
+        "ecr:GetAuthorizationToken",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:ListImages"
+      ]
+    }
+  ]
+}
+```
+
+The token is valid to authenticate against any registry id, the user has access. 
 Depending on how you set the trust relationship on ECR repository policy. 
 
 Finally annotate the service account with your role arn
@@ -42,6 +105,12 @@ serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/argocd-ecr-updater
 ```
+
+## Use Helm Charts from ECR
+
+* [ArggoCD App](example/example-argocd-app.yaml)
+* [Helm Chart](example/Chart.yaml)
+
 
 ## Install with Helm
 ```bash
@@ -76,3 +145,7 @@ ARGOCD_ECR_UPDATER_KUBECONFIG="/home/user/.kube/config"
 ## Related GitHub Issues
 * https://github.com/argoproj/argo-cd/issues/8097
 * https://github.com/argoproj/argo-cd/issues/8952
+
+## Alternative
+
+As alternative, you can use [External Secrets](https://external-secrets.io/v0.6.1/guides/common-k8s-secret-types/)
