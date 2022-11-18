@@ -1,8 +1,5 @@
 name: Release Charts
 
-env:
-  HELM_DOCS_VERSION: "1.11.0"
-
 on:
   push:
     branches:
@@ -34,6 +31,8 @@ jobs:
           version: v3.10.0
 
       - name: install helm-docs
+        env:
+          HELM_DOCS_VERSION: "1.11.0"
         run: |
           cd /tmp
           wget https://github.com/norwoodj/helm-docs/releases/download/v${{env.HELM_DOCS_VERSION}}/helm-docs_${{env.HELM_DOCS_VERSION}}_Linux_x86_64.tar.gz
