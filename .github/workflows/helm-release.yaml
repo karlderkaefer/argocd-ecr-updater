@@ -1,5 +1,8 @@
 name: Release Charts
 
+env:
+  HELM_DOCS_VERSION: "1.11.0"
+
 on:
   push:
     branches:
@@ -9,6 +12,8 @@ jobs:
   release:
     # depending on default permission settings for your org (contents being read-only or read-write for workloads), you will have to add permissions
     # see: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+    env:
+
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -27,6 +32,17 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: v3.10.0
+
+      - name: install helm-docs
+        run: |
+          cd /tmp
+          wget https://github.com/norwoodj/helm-docs/releases/download/v${{env.HELM_DOCS_VERSION}}/helm-docs_${{env.HELM_DOCS_VERSION}}_Linux_x86_64.tar.gz
+          tar -xvf helm-docs_${{env.HELM_DOCS_VERSION}}_Linux_x86_64.tar.gz
+          sudo mv helm-docs /usr/local/sbin
+
+      - name: run helm-docs
+        run: |
+          helm-docs
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.1

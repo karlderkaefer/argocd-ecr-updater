@@ -11,10 +11,11 @@ spec:
       {{- include "argocd-ecr-updater.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
       labels:
         {{- include "argocd-ecr-updater.selectorLabels" . | nindent 8 }}
         {{- if .Values.podLabels }}
@@ -35,8 +36,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: ARGOCD_ECR_UPDATER_NAMESPACE
-              value: {{ .Values.namespace }}
+            - valueFrom:
+                configMapKeyRef:
+                  key: {{ include "argocd-ecr-updater.fullname" . }}
           ports:
             - name: http
               containerPort: 8080

@@ -1,8 +1,8 @@
 apiVersion: v2
 name: argocd-ecr-updater
-description: A Helm chart for Kubernetes
+description: A Helm chart to update the ECR token for ECR based helm repositories
 type: application
-version: 0.3.1
+version: 0.3.2
 appVersion: "1.1.6"
 sources:
   - https://github.com/karlderkaefer/argocd-ecr-update
