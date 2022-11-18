@@ -13,7 +13,13 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-namespace: "argocd"
+env:
+  namespace: "argocd"
+#  additionalEnv:
+#    ARGOCD_ECR_UPDATER_NAMESPACE: "argocd"
+#    ARGOCD_ECR_UPDATER_INTERVAL: "6h0m0s"
+#    ARGOCD_ECR_UPDATER_KUBECONFIG: "/home/user/.kube/config"
+  additionalEnv: {}
 
 imagePullSecrets: []
 nameOverride: ""
