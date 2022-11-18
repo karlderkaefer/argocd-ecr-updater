@@ -11,7 +11,20 @@
 
 {{ template "chart.sourcesList" . }}
 
-## {{ template "chart.valuesHeader" . }}
+## Get Helm Repository Info
+
+```
+helm repo add argocd-ecr-updater https://karlderkaefer.github.io/argocd-ecr-updater
+helm search repo argocd-ecr-updater
+```
+
+## Install Helm Chart
+
+```
+helm upgrade --install argocd-ecr-updater -n argocd argocd-ecr-updater/argocd-ecr-updater
+```
+
+{{ template "chart.valuesHeader" . }}
 
 {{ template "chart.valuesTable" . }}
 
