@@ -2,17 +2,17 @@
 
 A Helm chart to update the ECR token for ECR based helm repositories
 
-![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.6](https://img.shields.io/badge/AppVersion-1.1.6-informational?style=flat-square)
+![Version: 0.3.5](https://img.shields.io/badge/Version-0.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.6](https://img.shields.io/badge/AppVersion-1.1.6-informational?style=flat-square)
 
 ## Maintainers
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| karlderkaefer |  | <https://github.com/karlderkaefer/argocd-ecr-update> |
+| karlderkaefer |  | <https://github.com/karlderkaefer/argocd-ecr-updater> |
 
 ## Source Code
 
-* <https://github.com/karlderkaefer/argocd-ecr-update>
+* <https://github.com/karlderkaefer/argocd-ecr-updater>
 
 ## Get Helm Repository Info
 
