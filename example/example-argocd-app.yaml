@@ -1,0 +1,8 @@
+project: default
+source:
+  repoURL: 123456789012.dkr.ecr.eu-central-1.amazonaws.com
+  targetRevision: 0.1.0
+  chart: example-chart
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: default
