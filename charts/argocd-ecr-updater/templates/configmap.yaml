@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "argocd-ecr-updater.labels" . | nindent 4 }}
 data:
-  ARGOCD_ECR_UPDATER_NAMESPACE: {{ .Values.env.namespace }}
+  ARGOCD_ECR_UPDATER_NAMESPACE: {{ .Values.env.namespace | quote }}
   {{- range $key, $val := .Values.env.additionalEnv }}
-  {{ $key }}: {{ $val }}
+  {{ $key }}: {{ $val | quote }}
   {{- end }}

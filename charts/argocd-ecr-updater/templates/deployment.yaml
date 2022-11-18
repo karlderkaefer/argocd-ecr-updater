@@ -35,10 +35,9 @@ spec:
             {{- toYaml .Values.containerSecurityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - valueFrom:
-                configMapKeyRef:
-                  key: {{ include "argocd-ecr-updater.fullname" . }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "argocd-ecr-updater.fullname" . }}
           ports:
             - name: http
               containerPort: 8080
