@@ -6,7 +6,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 go build -o /bin/argocd-ecr-updater
 
-FROM gcr.io/distroless/base-debian11
+FROM gcr.io/distroless/static-debian11
 EXPOSE 8080
 WORKDIR /app
 COPY --from=BASE /bin/argocd-ecr-updater .
