@@ -21,9 +21,8 @@ type RepositoryInfo struct {
 	Id   string
 }
 
-func NewAwsClient() (*AwsClient, error) {
-	// TODO remove profile
-	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithDefaultRegion(""))
+func NewAwsClient(region string) (*AwsClient, error) {
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion(region))
 	if err != nil {
 		return nil, fmt.Errorf("unable to load SDK config, %v", err)
 	}
@@ -31,7 +30,11 @@ func NewAwsClient() (*AwsClient, error) {
 	return &AwsClient{ecrClient: client}, nil
 }
 
-func (client *AwsClient) GetToken() (string, error) {
+func GetToken(region string) (string, error) {
+	client, err := NewAwsClient(region)
+	if err != nil {
+		return "", err
+	}
 	resp, err := client.ecrClient.GetAuthorizationToken(context.TODO(), &ecr.GetAuthorizationTokenInput{})
 	if err != nil {
 		logrus.Errorf("unable to load SDK config, %v", err)
@@ -70,7 +73,7 @@ func (client *AwsClient) ValidateAccess(repository RepositoryInfo) error {
 		return fmt.Errorf("unable to authenticate to repository id %s repository name %s, %v", repository.Id, repository.Name, err)
 	}
 	if len(images.ImageIds) < 1 {
-		logrus.Warn("detected not image tags in repository")
+		logrus.Warn("detected no image tags in repository")
 	}
 	return nil
 }
