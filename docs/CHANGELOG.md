@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.7...v1.2.0) (2022-12-02)
+
+
+### Bug Fixes
+
+* use static distroless image ([740d12b](https://github.com/karlderkaefer/argocd-ecr-updater/commit/740d12b09697758becdfe119afe5e1c4138a9e5d))
+
+
+### Features
+
+* read region from secret and use in aws client ([f9f50fb](https://github.com/karlderkaefer/argocd-ecr-updater/commit/f9f50fb865c15e88871d5a0868b95489d6204071)), closes [#13](https://github.com/karlderkaefer/argocd-ecr-updater/issues/13)
+
 ## [1.1.7](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.6...v1.1.7) (2022-12-01)
 
 
