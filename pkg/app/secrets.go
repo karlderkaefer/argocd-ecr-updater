@@ -80,6 +80,10 @@ func (client *KubernetesAppClient) MutateSecrets(ctx context.Context) error {
 			break
 		}
 		token, err := aws.GetToken(registry.region)
+		if err != nil {
+			logrus.Errorf("Error when authenticate to registry %s in region %s for secret %s %v", registry.accountId, registry.region, secret.Name, err)
+			break
+		}
 		logrus.Info("Rotate Token for Secret", secret.Name)
 		err = client.mutateSecret(ctx, secret, token)
 		if err != nil {

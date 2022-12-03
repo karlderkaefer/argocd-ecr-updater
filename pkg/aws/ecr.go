@@ -35,14 +35,15 @@ func GetToken(region string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	logrus.Debugf("ecr login successful for region %s", region)
 	resp, err := client.ecrClient.GetAuthorizationToken(context.TODO(), &ecr.GetAuthorizationTokenInput{})
 	if err != nil {
 		logrus.Errorf("unable to load SDK config, %v", err)
 		return "", err
 	}
 	if len(resp.AuthorizationData) < 1 {
-		logrus.Errorln("length of auhtorization data must be greater than 0")
-		return "", errors.New("length of auhtorization data must be greater than 0")
+		logrus.Errorln("length of authorization data must be greater than 0")
+		return "", errors.New("length of authorization data must be greater than 0")
 	}
 	token := resp.AuthorizationData[0].AuthorizationToken
 
