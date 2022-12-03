@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.2.0...v1.2.1) (2022-12-03)
+
+
+### Bug Fixes
+
+* check error after authenticate to ecr repository ([42bf536](https://github.com/karlderkaefer/argocd-ecr-updater/commit/42bf53667420af4d76dbf9376b46895d8c35b671))
+
 # [1.2.0](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.1.7...v1.2.0) (2022-12-02)
 
 
