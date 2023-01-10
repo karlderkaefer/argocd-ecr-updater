@@ -3,15 +3,12 @@
     "github>karlderkaefer/renovate-config:golang",
     "schedule:monthly"
   ],
-  "packageRules": [
-    {
-      "matchPackageNames": ["k8s.io/client-go"],
-      "allowedVersions": "<=1.0"
-    }
-  ],
   "vulnerabilityAlerts": {
     "labels": ["security"],
     "automerge": true,
     "assignees": ["@karlderkaefer"]
-  }
+  },
+  "ignorePaths": [
+    "example/**"
+  ]
 }
