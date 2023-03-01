@@ -50,7 +50,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@55a34859132125dc0090064b58371f30aa53395a
+        uses: docker/build-push-action@35434f557ad77672899d67f7992fb5560bda1071
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
