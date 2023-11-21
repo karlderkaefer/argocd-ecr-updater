@@ -108,7 +108,7 @@ serviceAccount:
 
 ## Use Helm Charts from ECR
 
-* [ArggoCD App](example/example-argocd-app.yaml)
+* [ArgoCD App](example/example-argocd-app.yaml)
 * [Helm Chart](example/Chart.yaml)
 
 
