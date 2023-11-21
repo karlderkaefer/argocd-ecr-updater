@@ -2,8 +2,8 @@ apiVersion: v2
 name: argocd-ecr-updater
 description: A Helm chart to update the ECR token for ECR based helm repositories
 type: application
-version: 0.3.15
-appVersion: "1.2.9"
+version: 0.3.16
+appVersion: "1.2.10"
 sources:
   - https://github.com/karlderkaefer/argocd-ecr-updater
 maintainers:
