@@ -11,5 +11,5 @@ roleRef:
   name: {{ include "argocd-ecr-updater.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ include "argocd-ecr-updater.fullname" . }}
+    name: {{ include "argocd-ecr-updater.serviceAccountName" . }}
 {{- end }}
