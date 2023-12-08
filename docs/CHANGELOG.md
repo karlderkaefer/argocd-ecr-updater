@@ -1,3 +1,10 @@
+## [1.2.12](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.2.11...v1.2.12) (2023-12-08)
+
+
+### Bug Fixes
+
+* change RBAC subject to serviceAccountName helper ([73ef2ef](https://github.com/karlderkaefer/argocd-ecr-updater/commit/73ef2ef10f2ca0855aae08cfae4eaab2469bf57d))
+
 ## [1.2.11](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.2.10...v1.2.11) (2023-12-01)
 
 
