@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.2...v1.3.3) (2024-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/ecr to v1.31.0 ([#123](https://github.com/karlderkaefer/argocd-ecr-updater/issues/123)) ([a1b986b](https://github.com/karlderkaefer/argocd-ecr-updater/commit/a1b986b7923d2b924188510dd1fec745e1c90a31))
+
 ## [1.3.2](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.1...v1.3.2) (2024-07-23)
 
 
