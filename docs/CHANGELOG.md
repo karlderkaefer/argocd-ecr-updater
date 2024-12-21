@@ -1,3 +1,10 @@
+## [1.3.8](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.7...v1.3.8) (2024-12-21)
+
+
+### Bug Fixes
+
+* **security:** patch latest version for xnet ([#138](https://github.com/karlderkaefer/argocd-ecr-updater/issues/138)) ([218d8df](https://github.com/karlderkaefer/argocd-ecr-updater/commit/218d8df93c81815db5c0c63345b945781d96f298))
+
 ## [1.3.7](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.6...v1.3.7) (2024-12-01)
 
 
