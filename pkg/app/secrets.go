@@ -4,16 +4,18 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"regexp"
+
 	"github.com/karlderkaefer/argocd-ecr-updater/pkg/aws"
 	"github.com/karlderkaefer/argocd-ecr-updater/pkg/kube"
 	"github.com/sirupsen/logrus"
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"regexp"
 )
 
 const RequiredLabelApp = "argocd-ecr-updater=enabled"
 const RequiredLabelArgoCD = "argocd.argoproj.io/secret-type=repository"
+
 // https://github.com/argoproj/argo-cd/issues/19881
 // https://argo-cd.readthedocs.io/en/latest/operator-manual/argocd-repo-creds-yaml/
 const RequiredLabelArgoCDNew = "argocd.argoproj.io/secret-type=repo-creds"
@@ -40,7 +42,7 @@ func NewKubernetesAppClient(ctx context.Context, client *kube.KubernetesClient, 
 
 func (client *KubernetesAppClient) ListSecrets(ctx context.Context) (*v1.SecretList, error) {
 	list, err := client.kubeClient.CoreClientset.Secrets(client.kubeClient.Namespace).List(ctx, metav1.ListOptions{
-		LabelSelector: fmt.Sprintf("%s,%s", RequiredLabelApp, RequiredLabelArgoCD, RequiredLabelArgoCDNew),
+		LabelSelector: fmt.Sprintf("%s,%s,%s", RequiredLabelApp, RequiredLabelArgoCD, RequiredLabelArgoCDNew),
 	})
 	if err != nil {
 		return nil, err
