@@ -14,11 +14,10 @@ import (
 )
 
 const RequiredLabelApp = "argocd-ecr-updater=enabled"
-const RequiredLabelArgoCD = "argocd.argoproj.io/secret-type=repository"
 
 // https://github.com/argoproj/argo-cd/issues/19881
 // https://argo-cd.readthedocs.io/en/latest/operator-manual/argocd-repo-creds-yaml/
-const RequiredLabelArgoCDNew = "argocd.argoproj.io/secret-type=repo-creds"
+const RequiredLabelArgoCD = "argocd.argoproj.io/secret-type=repo-creds"
 
 type KubernetesAppClient struct {
 	kubeClient kube.KubernetesClient
@@ -42,7 +41,7 @@ func NewKubernetesAppClient(ctx context.Context, client *kube.KubernetesClient, 
 
 func (client *KubernetesAppClient) ListSecrets(ctx context.Context) (*v1.SecretList, error) {
 	list, err := client.kubeClient.CoreClientset.Secrets(client.kubeClient.Namespace).List(ctx, metav1.ListOptions{
-		LabelSelector: fmt.Sprintf("%s,%s,%s", RequiredLabelApp, RequiredLabelArgoCD, RequiredLabelArgoCDNew),
+		LabelSelector: fmt.Sprintf("%s,%s", RequiredLabelApp, RequiredLabelArgoCD),
 	})
 	if err != nil {
 		return nil, err
