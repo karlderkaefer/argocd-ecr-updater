@@ -4,16 +4,20 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"regexp"
+
 	"github.com/karlderkaefer/argocd-ecr-updater/pkg/aws"
 	"github.com/karlderkaefer/argocd-ecr-updater/pkg/kube"
 	"github.com/sirupsen/logrus"
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"regexp"
 )
 
 const RequiredLabelApp = "argocd-ecr-updater=enabled"
-const RequiredLabelArgoCD = "argocd.argoproj.io/secret-type=repository"
+
+// https://github.com/argoproj/argo-cd/issues/19881
+// https://argo-cd.readthedocs.io/en/latest/operator-manual/argocd-repo-creds-yaml/
+const RequiredLabelArgoCD = "argocd.argoproj.io/secret-type=repo-creds"
 
 type KubernetesAppClient struct {
 	kubeClient kube.KubernetesClient
@@ -84,7 +88,7 @@ func (client *KubernetesAppClient) MutateSecrets(ctx context.Context) error {
 			logrus.Errorf("Error when authenticate to registry %s in region %s for secret %s %v", registry.accountId, registry.region, secret.Name, err)
 			break
 		}
-		logrus.Info("Rotate Token for Secret", secret.Name)
+		logrus.Info("Rotate Token for Secret: ", secret.Name)
 		err = client.mutateSecret(ctx, secret, token)
 		if err != nil {
 			return err
