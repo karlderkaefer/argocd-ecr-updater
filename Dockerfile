@@ -1,4 +1,4 @@
-FROM golang:1.24 as BASE
+FROM golang:1.25 as BASE
 WORKDIR /go/src/github.com/karlderkaefer/argocd-image-updater/
 COPY go.mod .
 COPY go.sum .
