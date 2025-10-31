@@ -1,3 +1,16 @@
+## [1.3.10](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.9...v1.3.10) (2025-10-31)
+
+
+### Bug Fixes
+
+* **deps:** update golang dependencies ([#145](https://github.com/karlderkaefer/argocd-ecr-updater/issues/145)) ([5429972](https://github.com/karlderkaefer/argocd-ecr-updater/commit/5429972bf8a8cc0a5866b8384adbafa1290a91fe))
+* **deps:** update golang dependencies ([#147](https://github.com/karlderkaefer/argocd-ecr-updater/issues/147)) ([d25a3ed](https://github.com/karlderkaefer/argocd-ecr-updater/commit/d25a3ed202c0feed55cc4c781df98a57ba556e1e))
+* **deps:** update golang dependencies ([#150](https://github.com/karlderkaefer/argocd-ecr-updater/issues/150)) ([37d4c2b](https://github.com/karlderkaefer/argocd-ecr-updater/commit/37d4c2bb9a794468974429e892a69be2b1014111))
+* **deps:** update golang dependencies ([#155](https://github.com/karlderkaefer/argocd-ecr-updater/issues/155)) ([45045c0](https://github.com/karlderkaefer/argocd-ecr-updater/commit/45045c0fd922494655e264c0c71ba1020fc4f937))
+* **deps:** update golang dependencies ([#157](https://github.com/karlderkaefer/argocd-ecr-updater/issues/157)) ([41d7da6](https://github.com/karlderkaefer/argocd-ecr-updater/commit/41d7da6d788d6c903807a7ab92dde1be2202d63a))
+* **deps:** update golang dependencies ([#161](https://github.com/karlderkaefer/argocd-ecr-updater/issues/161)) ([2cae798](https://github.com/karlderkaefer/argocd-ecr-updater/commit/2cae7984a7c732d2ff90c3ee74377613339c407e))
+* **deps:** update golang dependencies to v0.33.1 ([#152](https://github.com/karlderkaefer/argocd-ecr-updater/issues/152)) ([b73dd1b](https://github.com/karlderkaefer/argocd-ecr-updater/commit/b73dd1b6843e851bf36024025f3653e8b3d94d3d))
+
 ## [1.3.9](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.8...v1.3.9) (2025-01-01)
 
 
