@@ -15,18 +15,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          token: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: false
       - name: Install yq
         run: |
           sudo snap install yq
           yq --version
       - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v3
+        uses: cycjimmy/semantic-release-action@v5
         with:
           extra_plugins: |
-            @semantic-release/changelog
             @semantic-release/git
             @semantic-release/exec
+            @semantic-release/changelog
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
