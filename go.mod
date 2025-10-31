@@ -2,7 +2,7 @@ module github.com/karlderkaefer/argocd-ecr-updater
 
 go 1.24.0
 
-toolchain go1.24.5
+toolchain go1.25.3
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.39.2
