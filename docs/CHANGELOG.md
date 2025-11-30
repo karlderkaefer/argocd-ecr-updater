@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.11...v1.4.0) (2025-11-30)
+
+
+### Features
+
+* Use new labels for repo secrets ([#153](https://github.com/karlderkaefer/argocd-ecr-updater/issues/153)) ([ee2a7c3](https://github.com/karlderkaefer/argocd-ecr-updater/commit/ee2a7c34f9f4daeaeecd7997e96eb10d6630074c))
+
 ## [1.3.11](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.10...v1.3.11) (2025-11-01)
 
 
