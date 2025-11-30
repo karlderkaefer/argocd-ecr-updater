@@ -12,7 +12,7 @@ kind: Secret
 metadata:
   labels:
     argocd-ecr-updater: enabled
-    argocd.argoproj.io/secret-type: repository
+    argocd.argoproj.io/secret-type=repo-creds
 ```
 The data field `password` will be updated with a fresh token from AWS ECR.
 
