@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.4.0...v1.4.1) (2025-12-01)
+
+
+### Bug Fixes
+
+* **deps:** update golang dependencies ([#168](https://github.com/karlderkaefer/argocd-ecr-updater/issues/168)) ([6554ff3](https://github.com/karlderkaefer/argocd-ecr-updater/commit/6554ff35db9108bbc3234245f41ec9a21526e786))
+
 # [1.4.0](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.3.11...v1.4.0) (2025-11-30)
 
 
