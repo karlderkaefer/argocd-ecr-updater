@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.4.5...v1.4.6) (2026-07-12)
+
+
+### Bug Fixes
+
+* **security:** bump golang.org/x/net from 0.49.0 to 0.55.0 ([#184](https://github.com/karlderkaefer/argocd-ecr-updater/issues/184)) ([9550727](https://github.com/karlderkaefer/argocd-ecr-updater/commit/9550727b725fe8f8e779ab3e7c78b9c6c773ab54))
+
 ## [1.4.5](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.4.4...v1.4.5) (2026-07-02)
 
 
