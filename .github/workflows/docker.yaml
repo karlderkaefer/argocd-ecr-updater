@@ -20,6 +20,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      security-events: write
 
     steps:
       - name: Checkout repository
@@ -59,3 +60,22 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
+
+      - name: Analyze image for critical and high CVEs
+        id: docker-scout-cves
+        if: ${{ github.event_name != 'pull_request_target' && github.event_name != 'pull_request' && github.ref_name == 'main' }}
+        uses: docker/scout-action@v1
+        with:
+          command: cves
+          image: ${{ steps.meta.outputs.tags }}
+          sarif-file: sarif.output.json
+          summary: true
+          dockerhub-user: ${{ secrets.DOCKERHUB_USERNAME }}
+          dockerhub-password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Upload Docker Scout SARIF result
+        id: upload-sarif
+        if: ${{ github.event_name != 'pull_request_target' && github.event_name != 'pull_request' && github.ref_name == 'main' }}
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: sarif.output.json
