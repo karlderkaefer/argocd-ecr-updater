@@ -1,3 +1,10 @@
+## [1.4.8](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.4.7...v1.4.8) (2026-10-26)
+
+
+### Bug Fixes
+
+* resolve CVEs (x/net, x/text) + harden image with chainguard/static + enable Docker Scout ([#195](https://github.com/karlderkaefer/argocd-ecr-updater/issues/195)) ([d1fab7e](https://github.com/karlderkaefer/argocd-ecr-updater/commit/d1fab7ecaad664575c0e8d6904a8f1b34552c4be))
+
 ## [1.4.7](https://github.com/karlderkaefer/argocd-ecr-updater/compare/v1.4.6...v1.4.7) (2026-10-24)
 
 
