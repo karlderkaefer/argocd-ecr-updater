@@ -6,7 +6,12 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 go build -o /bin/argocd-ecr-updater
 
-FROM gcr.io/distroless/static-debian11
+# Hardened, minimal base for the statically linked binary (CGO_ENABLED=0).
+# chainguard/static ships a CA-certificates bundle and runs as the non-root
+# user "nonroot" (uid/gid 65532) by default. It has no shell and no package
+# manager, which removes the OS package layer entirely (no Debian tzdata, so
+# no recurring tzdata advisories).
+FROM cgr.dev/chainguard/static:latest
 EXPOSE 8080
 WORKDIR /app
 COPY --from=BASE /bin/argocd-ecr-updater .
