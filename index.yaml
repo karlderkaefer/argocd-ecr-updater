@@ -2,6 +2,21 @@ apiVersion: v1
 entries:
   argocd-ecr-updater:
   - apiVersion: v2
+    appVersion: 1.4.9
+    created: "2026-11-01T17:41:20.562700204Z"
+    description: A Helm chart to update the ECR token for ECR based helm repositories
+    digest: baa074000f7d908408a349d578d09a61f6308365262ac0ed932450d9625fdb95
+    maintainers:
+    - name: karlderkaefer
+      url: https://github.com/karlderkaefer/argocd-ecr-updater
+    name: argocd-ecr-updater
+    sources:
+    - https://github.com/karlderkaefer/argocd-ecr-updater
+    type: application
+    urls:
+    - https://github.com/karlderkaefer/argocd-ecr-updater/releases/download/argocd-ecr-updater-0.3.42/argocd-ecr-updater-0.3.42.tgz
+    version: 0.3.42
+  - apiVersion: v2
     appVersion: 1.4.8
     created: "2026-10-26T10:51:23.587701787Z"
     description: A Helm chart to update the ECR token for ECR based helm repositories
@@ -646,4 +661,4 @@ entries:
     urls:
     - https://github.com/karlderkaefer/argocd-ecr-updater/releases/download/argocd-ecr-updater-0.2.0/argocd-ecr-updater-0.2.0.tgz
     version: 0.2.0
-generated: "2026-10-26T10:51:23.588120416Z"
+generated: "2026-11-01T17:41:20.562913435Z"
